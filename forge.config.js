@@ -1,24 +1,40 @@
 module.exports = {
-  packagerConfig: {},
+  packagerConfig: {
+    icon: './icons/icon',
+  },
   rebuildConfig: {},
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
       config: {
-        
+        setupIcon: './icons/icon.ico',
       },
     },
     {
       name: '@electron-forge/maker-zip',
-      platforms: ['darwin'],
+      platforms: ['darwin', 'win32', 'linux'],
     },
     {
       name: '@electron-forge/maker-deb',
-      config: {},
+      config: {
+        options: {
+          icon: './icons/icon.png',
+        }
+      },
+    },
+    {
+      name: '@electron-forge/maker-dmg',
+      config: {
+        icon: './icons/icon.icns',
+        debug: false,
+        name: 'runway-detection'
+      },
     },
     {
       name: '@electron-forge/maker-rpm',
-      config: {},
+      config: {
+        icon: './icons/icon.png',
+      },
     },
   ],
 };

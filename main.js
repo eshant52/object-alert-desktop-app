@@ -5,15 +5,16 @@ const isdev = require('electron-is-dev')
 
 const port = 3000;
 
-const NOTIFICATION_TITLE = 'Basic Notification'
-const NOTIFICATION_BODY = 'Notification from the Main process'
+const NOTIFICATION_TITLE = 'Runway debris detection system'
+const NOTIFICATION_BODY = 'An application is running...'
 
-function notificationHandler (NOTIFICATION_TITLE, NOTIFICATION_BODY) {
-  new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY }).show()
+function notificationHandler (noti_title, noti_body) {
+  new Notification({ title: noti_title, body: noti_body }).show()
 }
 
 function createWindow () {
   const mainWindow = new BrowserWindow({
+    icon: './icons/icon.icns',
     width: 800,
     height: 600,
     webPreferences: {
@@ -23,6 +24,7 @@ function createWindow () {
       preload: path.join(__dirname, 'preload.js')
     }
   })
+  console.log(path.join(__dirname, 'icons/icon.icns'))
 
   // Load the React app.
   if (isdev) {
@@ -43,7 +45,7 @@ app.whenReady().then(() => {
       createWindow()
     }
   })
-}).then(notificationHandler)
+}).then(() => notificationHandler(NOTIFICATION_TITLE, NOTIFICATION_BODY))
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
