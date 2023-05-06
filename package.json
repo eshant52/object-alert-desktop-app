@@ -4,6 +4,7 @@
   "author": {
     "name": "AAI"
   },
+  "description": "Runway debris detection system is an object detection system to alert the airport controller for any kind of debris if found on runway.",
   "version": "1.0.0",
   "private": true,
   "dependencies": {

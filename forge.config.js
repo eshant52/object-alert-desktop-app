@@ -1,12 +1,12 @@
 module.exports = {
-  packagerConfig: {
-    icon: 'icon.avif'
-  },
+  packagerConfig: {},
   rebuildConfig: {},
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {},
+      config: {
+        
+      },
     },
     {
       name: '@electron-forge/maker-zip',
