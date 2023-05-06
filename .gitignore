@@ -6,7 +6,7 @@
 .pnp.js
 
 #development
-forge.config.js
+
 
 # testing
 /coverage

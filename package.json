@@ -1,6 +1,10 @@
 {
-  "name": "test-app",
-  "version": "0.1.0",
+  "name": "Runway-Debris-Detection-System",
+  "title": "Runway-Debris-Detection-System",
+  "author": {
+    "name": "AAI"
+  },
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@electron/remote": "^2.0.9",
