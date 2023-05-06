@@ -8,7 +8,7 @@ const port = 3000;
 const NOTIFICATION_TITLE = 'Basic Notification'
 const NOTIFICATION_BODY = 'Notification from the Main process'
 
-function showNotification () {
+function notificationHandler (NOTIFICATION_TITLE, NOTIFICATION_BODY) {
   new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY }).show()
 }
 
@@ -43,7 +43,7 @@ app.whenReady().then(() => {
       createWindow()
     }
   })
-}).then(showNotification)
+}).then(notificationHandler)
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {

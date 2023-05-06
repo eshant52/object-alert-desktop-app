@@ -81,5 +81,5 @@ export const cls = {
   79: "toothbrush",
 };
 
-export const detect_cls = [1, 4, 14, 19, 63, 64, 27, 39, 41, 44, 47, 56, 67, 73];
+export const detect_cls = [0, 1, 27, 39, 41, 47, 56, 67, 73];
 

@@ -36,7 +36,8 @@ const NavBarComponent = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <p className="font-bold text-lg" style={{fontFamily: "Calibri", color: "currentColor", fontSize: "30px"}}>Runway Debris Detection System</p>
+        <div>AAI</div>
+        <p className="normal-case text-xl">Fod</p>
       </div>
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">
@@ -74,12 +75,6 @@ const NavBarComponent = () => {
             <span className="badge badge-xs badge-primary indicator-item"></span>
           </div>
         </button>
-        {/* <div className="alert shadow-lg">
-  <div>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info flex-shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-    <span>12 unread messages. Tap to see.</span>
-  </div>
-</div> */}
       </div>
     </div>
   );

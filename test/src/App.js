@@ -9,9 +9,9 @@ function App() {
       <div>
         <NavBarComponent />
         <div className="container mx-auto my-5">
-          <div className="grid grid-cols-2 gap-4">
-            <WebCamVideo id="video-stream-12343" isIpCam={false} name="web cam"/>
-            <WebCamVideo id="video-stream-22343" isIpCam={true} address="http://172.20.10.14:4747/" name="ip camera"/>
+          <div className="grid grid-cols-3 gap-4">
+            <WebCamVideo id="23434"/>
+            <WebCamVideo id="12324"/>
           </div>
         </div>
         <TestComponent />
