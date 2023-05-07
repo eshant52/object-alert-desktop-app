@@ -1,15 +1,15 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import axios from "axios";
-import { detect_cls, cls } from "./data";
+import { detect_cls } from "./data";
 import NotificationComponent from "./Notification";
 
 const WebCamVideo = (props) => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
-  const [filteredList, setFilteredList] = useState([]);
-  const [image_data, setImage] = useState(null);
+  const [foundClsList, setFoundClsList] = useState([]);
+  const [annoImg, setAnnoImg] = useState(null);
   const [show_notification, setShowNotification] = useState(false);
-  const [isSending, setIsSending] = useState(false);
+  const [isAnnoImg, setIsAnnoImg] = useState(false);
 
   // useEffect(() => {
   //   const sendRequest = async () => {
@@ -80,21 +80,22 @@ const WebCamVideo = (props) => {
   // }, [videoRef]);
 
   const startCamera = async () => {
-    setIsSending(true);
     try {
       if (props.isIpCam) {
-        videoRef.current.srcObject = URL.createObjectURL(props.address);
+        videoRef.current.src = props.address;
       } else {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+        });
         videoRef.current.srcObject = stream;
       }
 
       videoRef.current.play();
-    } catch (err) {
+    } 
+    catch (err) {
       console.log(err);
       return;
     }
-    
 
     try {
       setInterval(async () => {
@@ -135,19 +136,8 @@ const WebCamVideo = (props) => {
               setShowNotification(false);
             }
 
-            const found_cls_list = res.data.found_cls;
-            // converting list value to string value
-            const list_str = found_cls_list.map((value) => value.toString());
-            console.log(list_str);
-
-            // converting to list
-            const filteredList = Object.entries(cls).filter(
-              ([key, value], index) => list_str.includes(key)
-            );
-
-            console.log(filteredList);
-            setFilteredList(filteredList);
-            setImage(res.data.anno_img);
+            setFoundClsList(res.data.found_cls_dict)
+            setAnnoImg(res.data.anno_img);
           })
           .catch((error) => {
             console.error(error);
@@ -193,12 +183,17 @@ const WebCamVideo = (props) => {
               <div className="modal">
                 <div className="modal-box">
                   <h3 className="font-bold text-lg">Object Detected</h3>
+
                   <img
-                    src={`data:image/jpeg;base64,${image_data}`}
-                    alt="annotated image"
+                    src={`data:image/jpeg;base64,${annoImg}`}
+                    alt="annotated frame"
                   />
-                  {filteredList.map((list) => (
-                    <p className="py-4">{list[1]}</p>
+
+                  {foundClsList.map((obj) => (
+                    <p className="py-2">
+                      <p>Object Id: {obj.id}</p>
+                      Object Name: {obj.name}
+                    </p>
                   ))}
 
                   <div className="modal-action">

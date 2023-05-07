@@ -17,6 +17,10 @@ function createWindow () {
     icon: './icons/icon.icns',
     width: 800,
     height: 600,
+    minHeight: 600,
+    maxHeight: 700,
+    minWidth: 800,
+    maxWidth: 1000,
     webPreferences: {
       enableRemoteModule: true,
       nodeIntegration: true,
