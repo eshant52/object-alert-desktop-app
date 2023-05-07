@@ -10,8 +10,17 @@ function App() {
         <NavBarComponent />
         <div className="container mx-auto my-5">
           <div className="grid grid-cols-2 gap-4">
-            <WebCamVideo id="video-stream-12343" isIpCam={false} name="web cam"/>
-            <WebCamVideo id="video-stream-22343" isIpCam={true} address="http://172.20.10.14:4747/" name="ip camera"/>
+            <WebCamVideo
+              id="video-stream-12343"
+              isIpCam={false}
+              name="web cam"
+            />
+            <WebCamVideo
+              id="video-stream-22343"
+              isIpCam={true}
+              address="http://192.168.51.9:4747/video"
+              name="ip camera"
+            />
           </div>
         </div>
         <TestComponent />
